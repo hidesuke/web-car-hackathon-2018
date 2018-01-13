@@ -4,7 +4,9 @@
   "description": "repos for web car hackathon 2018 for team \"Nakameguro Friends\"",
   "main": "index.js",
   "scripts": {
+    "start": "npx gulp webserver",
     "build": "npx gulp build",
+    "clean": "npx gulp clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
