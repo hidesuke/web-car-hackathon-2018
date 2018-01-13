@@ -57,5 +57,13 @@ typings/
 # dotenv environment variables file
 .env
 
-build/
+.DS_Store
+Thumbs.db
+
+build/**/*.html
+build/**/*.js*
+build/**/*.css
+build/**/*.png
+build/**/*.gif
+build/**/*.jpg
 

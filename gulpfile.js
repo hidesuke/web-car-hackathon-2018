@@ -9,5 +9,5 @@ gulp.task("build", function () {
     .pipe(babel())
     .pipe(concat("all.js"))
     .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest("build"));
+    .pipe(gulp.dest("build/js"));
 });
