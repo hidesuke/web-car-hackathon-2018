@@ -1,0 +1,28 @@
+{
+  "name": "web-car-hackathon-2018",
+  "version": "1.0.0",
+  "description": "repos for web car hackathon 2018 for team \"Nakameguro Friends\"",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hidesuke/web-car-hackathon-2018.git"
+  },
+  "author": "hidesuke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hidesuke/web-car-hackathon-2018/issues"
+  },
+  "homepage": "https://github.com/hidesuke/web-car-hackathon-2018#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^2.6.3"
+  }
+}
