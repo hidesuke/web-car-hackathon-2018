@@ -7,7 +7,7 @@
     "start": "npx gulp webserver",
     "build": "npx gulp build",
     "clean": "npx gulp clean",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "browser": "npx opener http://127.0.0.1:3000"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,15 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^15.1.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.6.3",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "^0.9.1",
+    "opener": "^1.4.3",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.17.1"
   }
 }

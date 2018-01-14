@@ -1,19 +1,20 @@
 var gulp = require("gulp");
-var sourcemaps = require("gulp-sourcemaps");
-var babel = require("gulp-babel");
-var concat = require("gulp-concat");
+var browserify = require('browserify');
+var babelify = require("babelify");
+var source = require('vinyl-source-stream');
 var webserver = require('gulp-webserver');
 var del = require('del');
 
 gulp.task("build", ["build-js", "build-html", "build-css"]);
 
 gulp.task("build-js", function () {
-  return gulp.src("src/**/*.js")
-    .pipe(sourcemaps.init())
-    .pipe(babel())
-    .pipe(concat("app.js"))
-    .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest("build/js"));
+  return browserify({
+    entries: ['src/js/app-main.js'],
+    transform: ['babelify']
+  })
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(gulp.dest('build/js'));
 });
 
 gulp.task("build-html", function () {
