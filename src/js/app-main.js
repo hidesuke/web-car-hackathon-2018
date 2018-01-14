@@ -3,5 +3,8 @@ const sample = require('./plugins/sample');
 
 $('#action-button').on('click', (e) => {
   const input = {};
-  $('#output').append(`<p>${sample.action().text}</p>`);
+  sample.action()
+    .then(res => {
+      $('#output').append(`<p>${res.text}</p>`);
+    });
 });
