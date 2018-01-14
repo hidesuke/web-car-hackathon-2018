@@ -64,5 +64,9 @@ http://127.0.0.1:3000 にアクセスすると `./build/index.html`が表示さ�
   * 内部の他のjsを指定したい場合は `const hoge = require('./plugins/moge')`とかすれば読み込まれます。逆に言うとrequireしないと絶対に読み込まれません。
   * plugin書いたら`app-main.js`内でなんかrequireするようなコード書いてください(予定)
 
+便利な情報
+--------
 
+* Chromeでlocalhostから外部APIを叩くと CORS違反で超怒られる。このプラグインを入れておくといろいろ捗る
+  * https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
 
