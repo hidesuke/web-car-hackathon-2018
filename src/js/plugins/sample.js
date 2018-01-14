@@ -1,7 +1,7 @@
 const sample = {};
 
-sample.sample = () => {
-  console.log('sample');
+sample.action = (input) => {
+  return {text: "ぷるぷる"};
 };
 
 module.exports = sample;

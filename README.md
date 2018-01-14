@@ -38,6 +38,8 @@ $ npm start      # webserverを立ち上げます
 $ npm run brower # ブラウザで http://127.0.0.1:3000 を開きます
 ```
 
+* `npm run build:continuous` コマンドを用意しました。こいつは呼ばれると一発buildを実行し、その後`src`配下のコードを監視。変更があれば自動でビルドが走るようになります。きゃー素敵抱いて！
+
 * gulpを直接叩きたいときは `npx`コマンドが便利です。
 
 ```sh

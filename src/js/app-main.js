@@ -1,4 +1,7 @@
-const hoge = require('./plugins/sample');
+const $ = require('jquery');
+const sample = require('./plugins/sample');
 
-console.log('entrypoint');
-hoge.sample();
+$('#action-button').on('click', (e) => {
+  const input = {};
+  $('#output').append(`<p>${sample.action().text}</p>`);
+});

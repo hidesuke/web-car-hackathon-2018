@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npx gulp webserver",
     "build": "npx gulp build",
+    "build:continuous": "npx gulp watch",
     "clean": "npx gulp clean",
     "browser": "npx opener http://127.0.0.1:3000"
   },
@@ -27,6 +28,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-webserver": "^0.9.1",
+    "jquery": "^3.2.1",
     "opener": "^1.4.3",
     "vinyl-source-stream": "^2.0.0"
   },

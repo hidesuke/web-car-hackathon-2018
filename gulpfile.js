@@ -40,3 +40,7 @@ gulp.task('webserver', function () {
 gulp.task('clean', function (done) {
   del(['./build/**/*'], done);
 });
+
+gulp.task('watch', ['build'], function () {
+  gulp.watch('src/**/*', ['build']);
+});
