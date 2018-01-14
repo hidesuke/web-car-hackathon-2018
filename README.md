@@ -58,11 +58,21 @@ http://127.0.0.1:3000 にアクセスすると `./build/index.html`が表示さ�
 コードの書き方
 ------------
 
+### 依存性解決
+
 * 他のモジュールを参照したいときは `require`します。
   * `npm run build`すると`browserify`を使って`require`で指定されている依存関係を解決します。`node.js`みたいな形で書くんですね。
   * たとえば外部のライブラリ(jQueryとか)を使いたい場合は `npm install --save-dev jQuery`してライブラリをインストール。その後、使いたいコード中で`const $ = require('jquery')`とかすると、jQueryが使えるようになります。
   * 内部の他のjsを指定したい場合は `const hoge = require('./plugins/moge')`とかすれば読み込まれます。逆に言うとrequireしないと絶対に読み込まれません。
-  * plugin書いたら`app-main.js`内でなんかrequireするようなコード書いてください(予定)
+
+### pluginの書き方
+
+* pluginは `src/js/plugins`配下に置きましょう
+* ファイル名はなんでもいいですが、[sample.js](./src/js/plugins/sample.js)のように、`action`メソッドを必ず作ってください。`app-main.js`はpluginの`action`メソッドを呼び出します。
+  * `action`メソッドは`input`というオブジェクトを引数にとり、jsonをPromiseで返却してください。
+  * 返却するjsonには`text`と`weight`をプロパティにもってください。`text`をブラウザで表示&読み上げを行います。`weight`の値になんらかの処理をしてどのpluginの返却値を採用するか決めます。ロジックは未実装です。そのうち考える。
+* pluginを書いたら、`app-main.js`の`plugins`配列のなかでrequireしてください。
+  * ディレクトリ読んで自動でrequireさせようとおもったけど、同じこと考えてる人がissue立ててPR出してる最中だったので諦めた。
 
 便利な情報
 --------
