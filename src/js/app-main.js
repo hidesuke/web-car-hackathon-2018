@@ -11,6 +11,7 @@ const dispatch = (input) => {
 const calcTotalWeight = (candidates) => {
   return candidates
     .map(c => parseFloat(c.weight))
+    .sort()
     .reduce((accumulator, curr, idx, arr) => { return accumulator + curr.weight });
 };
 
