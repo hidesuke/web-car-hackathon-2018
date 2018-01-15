@@ -70,7 +70,9 @@ http://127.0.0.1:3000 にアクセスすると `./build/index.html`が表示さ�
 * pluginは `src/js/plugins`配下に置きましょう
 * ファイル名はなんでもいいですが、[sample.js](./src/js/plugins/sample.js)のように、`action`メソッドを必ず作ってください。`app-main.js`はpluginの`action`メソッドを呼び出します。
   * `action`メソッドは`input`というオブジェクトを引数にとり、jsonをPromiseで返却してください。
-  * 返却するjsonには`text`と`weight`をプロパティにもってください。`text`をブラウザで表示&読み上げを行います。`weight`の値になんらかの処理をしてどのpluginの返却値を採用するか決めます。ロジックは未実装です。そのうち考える。
+  * 返却するjsonには`text`と`weight`をプロパティにもってください。
+    * `text`をブラウザで表示&読み上げを行います。
+    * `weight`を元に重み付き乱択アルゴリズムでランダムに返却する値をキメます。なので、なんか返却するときに`weight`に自信に応じてテキトウな値を設定して返却してください。一応`parseFloat`しますが、float値が望ましいです
 * pluginを書いたら、`app-main.js`の`plugins`配列のなかでrequireしてください。
   * ディレクトリ読んで自動でrequireさせようとおもったけど、同じこと考えてる人がissue立ててPR出してる最中だったので諦めた。
 
