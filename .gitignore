@@ -66,4 +66,5 @@ build/**/*.css
 build/**/*.png
 build/**/*.gif
 build/**/*.jpg
+src/config.json
 
