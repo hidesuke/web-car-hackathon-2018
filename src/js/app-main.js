@@ -34,8 +34,15 @@ const aggregate = (candidates) => {
   return resolveCandidate(candidates, random);
 };
 
+// Animate Character using createjs
+const onAction = (value) => {
+  exportRoot.chara.gotoAndPlay(value);
+};
+
 const render = (output) => {
+  const actions = ['normal', 'smile', 'angry', 'sad', 'surprise'];
   $('#output').append(`<p>${output.text}</p>`);
+  onAction(actions[Math.floor(Math.random() * actions.length)]);
 };
 
 $('#action-button').on('click', (e) => {

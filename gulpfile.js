@@ -5,7 +5,7 @@ var source = require('vinyl-source-stream');
 var webserver = require('gulp-webserver');
 var del = require('del');
 
-gulp.task("build", ["build-js", "build-html", "build-css"]);
+gulp.task("build", ["build-js", "build-resource", "build-css"]);
 
 gulp.task("build-js", function () {
   return browserify({
@@ -17,8 +17,8 @@ gulp.task("build-js", function () {
     .pipe(gulp.dest('build/js'));
 });
 
-gulp.task("build-html", function () {
-  return gulp.src(["src/**/*.html", "src/**/*.png", "src/**/*.jpg", "src/**/*.gif"])
+gulp.task("build-resource", function () {
+  return gulp.src(["src/**/*.html", "src/**/*.png", "src/**/*.jpg", "src/**/*.gif", "src/js/resource/*.js"])
     .pipe(gulp.dest("build"));
 });
 
