@@ -20,7 +20,7 @@ $(() => {
     sample.action(vias, render);
     // fuelLevelWatcher.action(vias, render);
     // interiorTemperature.action(vias, render);
-    // awakeness.action(vias, render);
+    awakeness.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
