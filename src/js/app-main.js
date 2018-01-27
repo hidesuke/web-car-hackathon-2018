@@ -6,7 +6,7 @@ const config = require('../config');
 const sample = require('./plugins/sample');
 const fuelLevelWatcher = require('./plugins/fuel-level-watcher')
 const interiorTemperature = require('./plugins/interior-temperature');
-
+const awakeness = require('./plugins/awakeness');
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -20,7 +20,7 @@ $(() => {
     sample.action(vias, render);
     fuelLevelWatcher.action(vias, render);
     interiorTemperature.action(vias, render);
-
+    awakeness.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
