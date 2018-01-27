@@ -1,6 +1,6 @@
-const meme = {};
+const awakeness = {};
 
-meme.action = (vias, callback) => {
+awakeness.action = (vias, callback) => {
     vias.subscribe(DRV_AWAKENESS, onSuccess(callback), onError);
 };
 
@@ -24,4 +24,4 @@ const onError = err => {
   console.log(err);
 }
 
-module.exports = meme;
+module.exports = awakeness;
