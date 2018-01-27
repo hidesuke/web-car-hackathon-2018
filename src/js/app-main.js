@@ -28,7 +28,7 @@ const onAction = (value) => {
 };
 
 const render = (output) => {
-  const actions = ['normal', 'smile', 'angry', 'sad', 'surprise'];
+  const actions = ['normal', 'smile', 'angry1', 'angry2', 'sad1', 'sad2', 'surprise'];
   $('#output').append(`<p>${output.text}</p>`);
   onAction(actions[Math.floor(Math.random() * actions.length)]);
 };
