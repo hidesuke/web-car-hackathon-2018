@@ -18,9 +18,9 @@ $(() => {
     console.log('connected');
     // ↓↓ pluginのactionをココで呼ぶ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     sample.action(vias, render);
-    fuelLevelWatcher.action(vias, render);
-    interiorTemperature.action(vias, render);
-    awakeness.action(vias, render);
+    // fuelLevelWatcher.action(vias, render);
+    // interiorTemperature.action(vias, render);
+    // awakeness.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
@@ -32,14 +32,13 @@ const onAction = (value) => {
 };
 
 const render = (output) => {
-  const actions = ['normal', 'smile', 'angry1', 'angry2', 'sad1', 'sad2', 'surprise', 'idle', 'love'];
   $('#output').append(`<p>${output.text}</p>`);
   if (isAudioPlayable) {
     const audio = $('#audio-itself').get(0);
-    $(audio).attr("src", speechQueryBuilder(output.text));
+    $(audio).attr("src", speechQueryBuilder(output.speech));
     audio.play();
     isAudioPlayable = false;
-    onAction(actions[Math.floor(Math.random() * actions.length)]);
+    onAction(output.kuma || 'idle');
   }
 };
 
@@ -48,8 +47,18 @@ $('#audio-itself').on('ended', (e) => {
   isAudioPlayable = true;
 });
 
-const speechQueryBuilder = (text) => {
+const speechQueryBuilder = (speech) => {
   let url = `${config.ai.url}`;
-  let query = `username=${config.ai.user}&password=${config.ai.passwd}&input_type=text&speaker_name=taichi&text=${encodeURIComponent(text)}`;
+  let query = `username=${config.ai.user}&password=${config.ai.passwd}&input_type=text&speaker_name=taichi&text=${encodeURIComponent(speech.text)}`;
+  query += speech.volume ? `&volume=${speech.volume}` : '';
+  query += speech.speed ? `&speed=${speech.speed}` : '';
+  query += speech.pitch ? `&pitch=${speech.pitch}` : '';
+  query += speech.range ? `&range=${speech.range}` : '';
+  const emotion = {};
+  emotion.j = speech.joy || 0;
+  emotion.s = speech.sadness || 0;
+  emotion.a = speech.anger || 0;
+  const emotionStr = JSON.stringify(emotion);
+  query += `&style=${encodeURIComponent(emotionStr)}`;
   return `${url}?${query}`;
 };
