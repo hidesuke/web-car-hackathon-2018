@@ -18,7 +18,7 @@ $(() => {
   vias.connect(() => {
     console.log('connected');
     // ↓↓ pluginのactionをココで呼ぶ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    sample.action(vias, render);
+    // sample.action(vias, render);
     awakeness.action(vias, render);
     fuelLevelWatcher.action(vias, render);
     interiorTemperature.action(vias, render);
@@ -34,8 +34,8 @@ const onAction = (value) => {
 };
 
 const render = (output) => {
-  $('#output').append(`<p>${output.text}</p>`);
   if (isAudioPlayable) {
+    $('#fukidashi-text').html(output.text);
     const audio = $('#audio-itself').get(0);
     $(audio).attr("src", speechQueryBuilder(output.speech));
     audio.play();
@@ -63,5 +63,6 @@ const speechQueryBuilder = (speech) => {
   emotion.a = speech.anger || 0;
   const emotionStr = JSON.stringify(emotion);
   query += `&style=${encodeURIComponent(emotionStr)}`;
+  console.log(`[Speech] ${speech.text}`);
   return `${url}?${query}`;
 };

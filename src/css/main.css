@@ -1,11 +1,58 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-image: url('../images/bg.png');
+}
+
 .hidden {
   display: none;
 }
 
 .container {
   display: flex;
+  margin: 0;
 }
 
 .box {
-  padding: 20px;
+  height: 100%;
+  margin: 0;
+}
+
+#output {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 642px;
+  min-height: 100%;
+}
+
+.wf-mplus1p { font-family: "Mplus 1p"; }
+
+.fukidashi {
+  min-width: 482px;
+  max-width: 482px;
+  min-height: 348px;
+  max-height: 348px;
+  background-image: url('../images/balloon.png');
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  padding-right: 40px;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+.fukidashi-bg {
+  width: 100%;
+  min-height: 768px;
+  background-image: url('../images/bg2.png');
+  background-size: cover;
+  margin-left: -140px;
 }
