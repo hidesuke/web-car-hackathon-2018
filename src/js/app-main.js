@@ -24,6 +24,7 @@ const idleText = [
   'パンダ……くまのプライドを忘れた動物。見習いたい。',
   'うりゃほい！　うりゃほい！　うりゃほい！　うりゃほい！'
 ];
+const actions = ['normal', 'smile', 'angry1', 'angry2', 'sad1', 'sad2', 'surprise', 'idle', 'love'];
 
 
 // ↓↓ 作ったプラグインをココでrequireする ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
@@ -33,6 +34,7 @@ const interiorTemperature = require('./plugins/interior-temperature');
 const awakeness = require('./plugins/awakeness');
 const stoppedVehicleDetector = require('./plugins/stopped-vehicle-detector');
 const totalDistanceMilestones = require('./plugins/total-distance-milestones');
+const grnaviSearch = require('./plugins/grnavi-search');
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -50,6 +52,7 @@ $(() => {
     interiorTemperature.action(vias, render);
     stoppedVehicleDetector.action(vias, render);
     totalDistanceMilestones.action(vias, render);
+    grnaviSearch.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
@@ -65,6 +68,13 @@ const onAction = (value) => {
 };
 
 const render = (output) => {
+  if (output.speech.text.length < 2) {
+    console.log('[!!] エラー回避');
+    const text = idleText[Math.floor(Math.random() * idleText.length)]
+    output.text = text;
+    output.speech.text = text;
+    output.kuma = actions[Math.floor(Math.random() * actions.length)];
+  }
   if (isAudioPlayable) {
     $('#fukidashi-text').html(output.text);
     const audio = $('#audio-itself').get(0);
@@ -81,7 +91,6 @@ $('#audio-itself').on('ended', (e) => {
   onAction('idle');
   isAudioPlayable = true;
 });
-
 const speechQueryBuilder = (speech) => {
   let url = `${config.ai.url}`;
   let query = `username=${config.ai.user}&password=${config.ai.passwd}&input_type=ssml&speaker_name=taichi&text=${encodeURIComponent(speech.text)}`;
@@ -95,6 +104,6 @@ const speechQueryBuilder = (speech) => {
   emotion.a = speech.anger || 0;
   const emotionStr = JSON.stringify(emotion);
   query += `&style=${encodeURIComponent(emotionStr)}`;
-  console.log(`[Speech] ${speech.text}`);
+  console.log(`[Speech] '${speech.text}'`);
   return `${url}?${query}`;
 };
