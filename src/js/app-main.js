@@ -1,6 +1,25 @@
 const $ = require('jquery');
 
+const config = require('../config');
 const plugins = [require('./plugins/sample')];
+
+const emotion = {};
+
+$(() => {
+  const vias = new VISClient(config.vehicle);
+  vias.connect()
+    .then(() => {
+      console.log('connected');
+      return vias.get('Signal');
+    })
+    .then(signal => {
+      console.log(signal);
+      dispatch(signal);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 const dispatch = (input) => {
   Promise.all(plugins.map(x => x.action(input)))

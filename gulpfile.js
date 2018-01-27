@@ -18,7 +18,7 @@ gulp.task("build-js", function () {
 });
 
 gulp.task("build-resource", function () {
-  return gulp.src(["src/**/*.html", "src/**/*.png", "src/**/*.jpg", "src/**/*.gif", "src/js/resource/*.js"])
+  return gulp.src(["src/**/*.html", "src/**/*.png", "src/**/*.jpg", "src/**/*.gif", "src/js/resource/*.js", "src/js/lib/*.js"])
     .pipe(gulp.dest("build"));
 });
 
