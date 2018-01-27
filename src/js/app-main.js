@@ -7,18 +7,21 @@ const emotion = {};
 
 $(() => {
   const vias = new VISClient(config.vehicle);
-  vias.connect()
-    .then(() => {
-      console.log('connected');
-      return vias.get('Signal');
-    })
-    .then(signal => {
-      console.log(signal);
-      dispatch(signal);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  vias.connect(() => {
+    console.log('connected');
+    vias.subscribe(GPS_LATITUDE,
+      (value) => { console.log(`GPS_LATITUDE: ${value}`) },
+      (err) => { console.log(err) }
+    );
+    vias.subscribe(GPS_LONGITUDE,
+      (value) => { console.log(`GPS_LONGITUDE: ${value}`) },
+      (err) => { console.log(err) }
+    );
+    vias.subscribe(VEHICLE_SPEED,
+      (value) => { console.log(`VEHICLE_SPEED: ${value / 1000.0} km/h`) },
+      (err) => { console.log(err) }
+    );
+  })
 });
 
 const dispatch = (input) => {
@@ -63,8 +66,3 @@ const render = (output) => {
   $('#output').append(`<p>${output.text}</p>`);
   onAction(actions[Math.floor(Math.random() * actions.length)]);
 };
-
-$('#action-button').on('click', (e) => {
-  const input = {};
-  dispatch(input);
-});
