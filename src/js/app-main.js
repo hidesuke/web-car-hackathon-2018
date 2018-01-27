@@ -5,6 +5,7 @@ const config = require('../config');
 // ↓↓ 作ったプラグインをココでrequireする ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 const sample = require('./plugins/sample');
 const fuelLevelWatcher = require('./plugins/fuel-level-watcher')
+const meme = require('./plugins/meme');
 
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
@@ -18,7 +19,7 @@ $(() => {
     // ↓↓ pluginのactionをココで呼ぶ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     sample.action(vias, render);
     fuelLevelWatcher.action(vias, render);
-
+    meme.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
