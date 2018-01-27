@@ -3,10 +3,11 @@ const $ = require('jquery');
 const config = require('../config');
 
 // ↓↓ 作ったプラグインをココでrequireする ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-const sample = require('./plugins/sample');
+// const sample = require('./plugins/sample');
 const fuelLevelWatcher = require('./plugins/fuel-level-watcher')
 const interiorTemperature = require('./plugins/interior-temperature');
 const awakeness = require('./plugins/awakeness');
+const stoppedVehicleDetector = require('./plugins/stopped-vehicle-detector');
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -17,10 +18,11 @@ $(() => {
   vias.connect(() => {
     console.log('connected');
     // ↓↓ pluginのactionをココで呼ぶ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    sample.action(vias, render);
+    //sample.action(vias, render);
     // fuelLevelWatcher.action(vias, render);
     // interiorTemperature.action(vias, render);
     // awakeness.action(vias, render);
+    stoppedVehicleDetector.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
@@ -44,12 +46,13 @@ const render = (output) => {
 
 $('#audio-itself').on('ended', (e) => {
   $('#audio-itself').removeAttr('src');
+  onAction('idle');
   isAudioPlayable = true;
 });
 
 const speechQueryBuilder = (speech) => {
   let url = `${config.ai.url}`;
-  let query = `username=${config.ai.user}&password=${config.ai.passwd}&input_type=text&speaker_name=taichi&text=${encodeURIComponent(speech.text)}`;
+  let query = `username=${config.ai.user}&password=${config.ai.passwd}&input_type=ssml&speaker_name=taichi&text=${encodeURIComponent(speech.text)}`;
   query += speech.volume ? `&volume=${speech.volume}` : '';
   query += speech.speed ? `&speed=${speech.speed}` : '';
   query += speech.pitch ? `&pitch=${speech.pitch}` : '';
