@@ -11,7 +11,7 @@ const onSuccess = callback => {
     if (drvAwakeness >= 60) {
         message = "おめめパッチリだね！";
     } else if (drvAwakeness >= 30) {
-        message = "ガムでも食べるかい？;"
+        message = "ガムでも食べるかい？"
     } else {
         message = "おぎろーーーーー！！！";
     }
