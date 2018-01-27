@@ -5,8 +5,8 @@ const config = require('../config');
 // ↓↓ 作ったプラグインをココでrequireする ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 const sample = require('./plugins/sample');
 const fuelLevelWatcher = require('./plugins/fuel-level-watcher')
+const interiorTemperature = require('./plugins/interior-temperature');
 const awakeness = require('./plugins/awakeness');
-
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -19,6 +19,7 @@ $(() => {
     // ↓↓ pluginのactionをココで呼ぶ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     sample.action(vias, render);
     fuelLevelWatcher.action(vias, render);
+    interiorTemperature.action(vias, render);
     awakeness.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
