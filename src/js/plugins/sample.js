@@ -1,14 +1,19 @@
 const sample = {};
 
-sample.action = (input) => {
-  return fetch('http://zipcloud.ibsnet.co.jp/api/search?zipcode=2410821', { mode: 'cors' })
-    .then(res => res.json())
-    .then(json => {
-      return JSON.stringify(json.results);
-    })
-    .then(str => {
-      return { text: str, weight: 1 };
-    });
+sample.action = (vias, callback) => {
+  vias.subscribe('Signal.Drivetrain.Transmission.Speed', onSuccess(callback), onError);
 };
+
+const onSuccess = callback => {
+  return speed => {
+    // なんかしょり
+    console.log(`speed from sample: ${speed}`)
+    callback({ text: `${speed}か良いスピードだ！` });
+  }
+};
+
+const onError = err => {
+  console.log(err);
+}
 
 module.exports = sample;
