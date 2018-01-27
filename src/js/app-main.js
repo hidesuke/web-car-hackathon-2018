@@ -30,7 +30,7 @@ const onAction = (value) => {
 };
 
 const render = (output) => {
-  const actions = ['normal', 'smile', 'angry1', 'angry2', 'sad1', 'sad2', 'surprise'];
+  const actions = ['normal', 'smile', 'angry1', 'angry2', 'sad1', 'sad2', 'surprise', 'idle', 'love'];
   $('#output').append(`<p>${output.text}</p>`);
   if (isAudioPlayable) {
     const audio = $('#audio-itself').get(0);
