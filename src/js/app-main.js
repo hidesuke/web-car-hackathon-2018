@@ -8,6 +8,7 @@ const fuelLevelWatcher = require('./plugins/fuel-level-watcher')
 const interiorTemperature = require('./plugins/interior-temperature');
 const awakeness = require('./plugins/awakeness');
 const stoppedVehicleDetector = require('./plugins/stopped-vehicle-detector');
+const totalDistanceMilestones = require('./plugins/total-distance-milestones');
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -23,6 +24,7 @@ $(() => {
     fuelLevelWatcher.action(vias, render);
     interiorTemperature.action(vias, render);
     stoppedVehicleDetector.action(vias, render);
+    totalDistanceMilestones.action(vias, render);
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
