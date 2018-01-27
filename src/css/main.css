@@ -1,3 +1,11 @@
 .hidden {
   display: none;
 }
+
+.container {
+  display: flex;
+}
+
+.box {
+  padding: 20px;
+}

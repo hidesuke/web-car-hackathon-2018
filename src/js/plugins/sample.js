@@ -8,7 +8,7 @@ const onSuccess = callback => {
   return speed => {
     // なんかしょり
     console.log(`speed from sample: ${speed}`)
-    callback({ text: `${speed / 1000.0} km/h}か良いスピードだ！` });
+    callback({ text: `時速 ${speed / 1000.0} キロ！ 良いスピードだ！` });
   }
 };
 
