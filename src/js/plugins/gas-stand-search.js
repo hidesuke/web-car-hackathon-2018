@@ -44,6 +44,7 @@ const onSuccessLat = cb => {
         .then(data => {
           console.log('[gas-stand-search]');
           console.log(data);
+          if (data.Result.length === 0) return;
           const stand = data.Result[0];
           if (plugin.prevGasStand === stand.id) return true;
           plugin.prevGasStand = stand.id;
