@@ -115,7 +115,7 @@ const onSuccess = cb => {
     plugin.prevSpeed = Math.floor(speed / 1000.00);
     const currSpeed = Math.floor(speed / 1000.00);
     console.log(`prev; ${plugin.prevSpeed}, curr: ${currSpeed}`);
-    if (currSpeed === 0 && plugin.count % 100 === 0 && !plugin.semaphore) {
+    if (currSpeed === 0 && plugin.count % 45 === 0 && !plugin.semaphore) {
       plugin.semaphore = true;
       cb(outputs[Math.floor(Math.random() * outputs.length)]);
     } else {
