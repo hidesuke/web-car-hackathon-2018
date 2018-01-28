@@ -35,6 +35,7 @@ const awakeness = require('./plugins/awakeness');
 const stoppedVehicleDetector = require('./plugins/stopped-vehicle-detector');
 const totalDistanceMilestones = require('./plugins/total-distance-milestones');
 const grnaviSearch = require('./plugins/grnavi-search');
+const denso = require('./plugins/denso');
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -53,6 +54,9 @@ $(() => {
     stoppedVehicleDetector.action(vias, render);
     totalDistanceMilestones.action(vias, render);
     grnaviSearch.action(vias, render);
+
+    denso.action(vias, render);
+    // asilla.action(vias, render);    
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   });
