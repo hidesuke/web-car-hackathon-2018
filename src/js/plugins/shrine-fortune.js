@@ -10,10 +10,28 @@ const FORTUNES = [
     speechText: '今日の運勢は、大吉です。やったね！'
   },
   {
+    emotion: 'love',
+    speech: { joy: 1.0 },
+    text: '今日の運勢は、超吉です。ウルトララッキー！',
+    speechText: '今日の運勢は、ちょうきちです。ウルトララッキー！'
+  },
+  {
     emotion: 'normal',
     speech: {},
     text: '今日の運勢は、小吉です。ぱっとしないね。',
     speechText: '今日の運勢は、しょうきちです。ぱっとしないね'
+  },
+  {
+    emotion: 'smile',
+    speech: {},
+    text: '今日の運勢は、吉です。実は中吉以上、大吉未満なの！',
+    speechText: '今日の運勢は、きちです。実は中吉以上、大吉未満なの！'
+  },
+  {
+    emotion: 'normal',
+    speech: {},
+    text: '今日の運勢は、半吉です。半吉……だれ？',
+    speechText: '今日の運勢は、はんきちです。はんきち……だれ?'
   },
   {
     emotion: 'sad1',
