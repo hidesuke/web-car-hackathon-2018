@@ -4,7 +4,7 @@ const config = require('../../config');
 
 plugin.coor = {};
 plugin.count = 0;
-plugin.prevGasStand = null;
+plugin.prevGasStand = 0;
 const THRESHOLD = 2;
 const actions = ['smile', 'love', 'noram'];
 const pattern = ['アブラ！　アブラ！', 'ガソリンの香りがする', '鼻孔をくすぶるガソリンの香り', 'はぁ、はぁ、アブラーー', '火の用心! ガソリン一発だいばくはふ']
@@ -43,11 +43,10 @@ const onSuccessLat = cb => {
         .then(res => res.json())
         .then(data => {
           console.log('[gas-stand-search]');
-          console.log(data);
           if (data.Result.length === 0) return;
           const stand = data.Result[0];
-          if (plugin.prevGasStand === stand.id) return true;
-          plugin.prevGasStand = stand.id;
+          if (plugin.prevGasStand === stand.Id) return true;
+          plugin.prevGasStand = stand.Id;
           const retText = `${makers[stand.Maker]}があるよ。${pattern[Math.floor(Math.random() * pattern.length)]}`
           cb({
             text: retText,
