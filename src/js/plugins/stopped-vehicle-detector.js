@@ -10,6 +10,34 @@ plugin.action = (vias, callback) => {
 
 const outputs = [
   {
+    text: `クルマのスピードが感じられないだ……と！？`,
+    kuma: 'angry1',
+    speech: {
+      text: `クルマのスピードが感じられないだ……と！？`,
+      volume: 1.0,
+      speed: 0.7,
+      pitch: 0.7,
+      range: 2.0,
+      joy: 0.0,
+      sadness: 0.0,
+      anger: 1.0
+    }
+  },
+  {
+    text: `「パンツァーフォー！」……と言ってるけど、発車してくれないのね……。`,
+    kuma: 'sad1',
+    speech: {
+      text: `「パンツァーフォー！」……と言ってるけど、発車してくれないのね……。`,
+      volume: 1.0,
+      speed: 0.9,
+      pitch: 1.0,
+      range: 2.0,
+      joy: 0.0,
+      sadness: 0.8,
+      anger: 0.0
+    }
+  },
+  {
     text: `突然ですが、クルマのモノマネをします。「ブルンブルンブルルン」。にてるでしょ？`,
     kuma: 'smile',
     speech: {
