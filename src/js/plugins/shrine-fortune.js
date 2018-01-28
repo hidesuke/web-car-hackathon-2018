@@ -25,7 +25,7 @@ const FORTUNES = [
     emotion: 'smile',
     speech: {},
     text: '今日の運勢は、吉です。実は中吉以上、大吉未満なの！',
-    speechText: '今日の運勢は、きちです。実は中吉以上、大吉未満なの！'
+    speechText: '今日の運勢は、きちです。実はちゅうきち以上、大吉未満なの！'
   },
   {
     emotion: 'normal',
