@@ -43,6 +43,7 @@ denso.action = (vias, callback) => {
       return res.text();
     })
     .then(text => {
+      console.log(text);
       denso_json = eval(text);
     });
 
