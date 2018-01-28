@@ -36,6 +36,7 @@ const totalDistanceMilestones = require('./plugins/total-distance-milestones');
 const grnaviSearch = require('./plugins/grnavi-search');
 const denso = require('./plugins/denso');
 const gasStandSearch = require('./plugins/gas-stand-search');
+const weatherForecast = require('./plugins/weather-forecast');
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -57,6 +58,7 @@ $(() => {
     gasStandSearch.action(vias, render);
 
     denso.action(vias, render);
+    weatherForecast.action(vias, render);
     // asilla.action(vias, render);    
     // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
