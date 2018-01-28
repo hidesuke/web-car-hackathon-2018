@@ -54,6 +54,7 @@ body {
   width: 100%;
   min-height: 768px;
   background-image: url('../images/bg2.png');
+  background-repeat: repeat-y;
   background-size: cover;
   margin-left: -140px;
 }
