@@ -1,6 +1,8 @@
 const plugin = {};
 
 plugin.semaphore = false;
+plugin.count = 0;
+
 
 plugin.action = (vias, callback) => {
   vias.subscribe(VEHICLE_SPEED, onSuccess(callback), onError);
@@ -81,10 +83,11 @@ const outputs = [
 
 const onSuccess = cb => {
   return speed => {
+    plugin.count++;
     plugin.prevSpeed = Math.floor(speed / 1000.00);
     const currSpeed = Math.floor(speed / 1000.00);
     console.log(`prev; ${plugin.prevSpeed}, curr: ${currSpeed}`);
-    if (currSpeed === 0 && !plugin.semaphore) {
+    if (currSpeed === 0 && plugin.count % 5 === 0 && !plugin.semaphore) {
       plugin.semaphore = true;
       cb(outputs[Math.floor(Math.random() * outputs.length)]);
     } else {

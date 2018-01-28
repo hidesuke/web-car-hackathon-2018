@@ -18,7 +18,6 @@ const idleText = [
   'インド人を右に！',
   'さぁさぁ、よってらっしゃいみてらっしゃい',
   '状況に応じてテキトーなことをしゃべるよ。',
-  '♪〜〜',
   'webとクルマと大五郎',
   'くま。くまくまくまぁ',
   'パンダ……くまのプライドを忘れた動物。見習いたい。',
@@ -36,6 +35,7 @@ const stoppedVehicleDetector = require('./plugins/stopped-vehicle-detector');
 const totalDistanceMilestones = require('./plugins/total-distance-milestones');
 const grnaviSearch = require('./plugins/grnavi-search');
 const denso = require('./plugins/denso');
+const gasStandSearch = require('./plugins/gas-stand-search');
 // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
 let isAudioPlayable = true;
@@ -54,6 +54,7 @@ $(() => {
     stoppedVehicleDetector.action(vias, render);
     totalDistanceMilestones.action(vias, render);
     grnaviSearch.action(vias, render);
+    gasStandSearch.action(vias, render);
 
     denso.action(vias, render);
     // asilla.action(vias, render);    
