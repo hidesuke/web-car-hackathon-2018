@@ -8,11 +8,11 @@ const AwakenessLevel = {
 
 const AWAKE_THRESHOLD = 60;
 const DOZE_THRESHOLD = 30;
-const DOZE_TEXT = "ガムでも食べるかい？";
+const DOZE_TEXT = "眠いのかな？ガムでも食べるかい？";
 const ASLEEP_TEXT = "おぎろーーーーー！！！";
 const ASLEEP_ACTIONS = ['angry1', 'angry2'];
 
-let currentAwakenessLevel = AwakenessLevel.AWAKE;
+awakeness.currentAwakenessLevel = AwakenessLevel.AWAKE;
 
 awakeness.action = (vias, callback) => {
     vias.subscribe(DRV_AWAKENESS, onSuccess(callback), onError);
@@ -21,7 +21,7 @@ awakeness.action = (vias, callback) => {
 const onSuccess = callback => {
   return drvAwakeness => {
     console.log(`driver awakeness: ${drvAwakeness}`);
-    let message = "";
+    let message = undefined;
     let action = "normal";
     let volume = 1;
     let speed = 1;
@@ -33,15 +33,14 @@ const onSuccess = callback => {
     // 注意喚起は一度だけ
     // 30きったら、ずっと言い続ける
     if (drvAwakeness >= AWAKE_THRESHOLD) {
-        if (currentAwakenessLevel < AwakenessLevel.AWAKE) {
-            currentAwakenessLevel = AwakenessLevel.AWAKE;
-        }
+        awakeness.currentAwakenessLevel = AwakenessLevel.AWAKE;
     } else if (drvAwakeness >= DOZE_THRESHOLD) {
-        if (currentAwakenessLevel > AwakenessLevel.DOZE) {
-            currentAwakenessLevel = AwakenessLevel.DOZE;
+        if (awakeness.currentAwakenessLevel > AwakenessLevel.DOZE) {
+            awakeness.currentAwakenessLevel = AwakenessLevel.DOZE;
             message = DOZE_TEXT;
         }
     } else {
+        awakeness.currentAwakenessLevel = AwakenessLevel.ASLEEP;
         message = ASLEEP_TEXT;
         action = ASLEEP_ACTIONS[Math.floor(Math.random() * ASLEEP_ACTIONS.length)];
         volume = 2;
@@ -50,7 +49,7 @@ const onSuccess = callback => {
         range = 2;
         anger = 1;
     }
-    console.log(`awakeness_level: ${currentAwakenessLevel}`);
+    console.log(`awakeness_level: ${awakeness.currentAwakenessLevel}`);
     console.log(message);
     if (message) {
         callback({
