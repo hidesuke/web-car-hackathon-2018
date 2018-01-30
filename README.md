@@ -3,6 +3,11 @@ Webとクルマのハッカソン2018 チーム「中目黒フレンズ」のた
 
 フレンズなんだね！
 
+後日つくった成果物動画
+==================
+
+[![くまさん動画](https://img.youtube.com/vi/V26lSXpiMm8/0.jpg)](https://www.youtube.com/watch?v=V26lSXpiMm8)
+
 雑な説明
 =======
 
